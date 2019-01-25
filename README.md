@@ -1,6 +1,6 @@
 # vscrollr.js
 
-> Virtual scrolling with relative positioning
+> Virtual scrolling list with relative positioning
 
 [![NPM](https://img.shields.io/npm/v/vscrollr.js.svg)](https://www.npmjs.com/package/vscrollr.js) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,14 +13,34 @@ npm install --save vscrollr.js
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import React from 'react'
 
-import MyComponent from 'vscrollr.js'
+import List from 'vscrollr.js'
 
 class Example extends React.Component {
-  render () {
+  state = {
+    items: staticItems,
+  };
+  
+  rowRenderer = ({index, key, isVisible, isScrolling, setRef}) => {
+    const {items} = this.state;
+    let item = items[index];
     return (
-      <MyComponent />
+      <div key={key} ref={setRef}>
+        {item}
+      </div>
+    )
+  };
+  
+  render () {
+    const {items} = this.state;
+    return (
+      <div className="scroll-container">
+        <List
+          rowsCount={items.length}
+          rowRenderer={this.rowRenderer}
+          containerClassName="scroll-container"/>
+      </div>
     )
   }
 }

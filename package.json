@@ -1,7 +1,7 @@
 {
   "name": "vscrollr.js",
-  "version": "1.0.0",
-  "description": "Virtual scrolling with relative positioning",
+  "version": "0.1.0",
+  "description": "Virtual scrolling list with relative positioning",
   "author": "SQReder",
   "license": "MIT",
   "repository": "SQReder/vscrollr.js",
@@ -21,7 +21,11 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/lodash": "^4.14.119",
+    "@types/ramda": "^0.25.47",
+    "ramda": "^0.26.1"
+  },
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
